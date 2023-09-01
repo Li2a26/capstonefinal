@@ -46,8 +46,15 @@
               <i class="fas fa-gem me-3"></i>QUEER QUARTERS
             </h6>
             <p>
-              Here you can use rows and columns to organize your footer content. Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit.
+                Queer Quarters is a haven of vibrant expression and inclusivity. 
+                We offer a diverse selection of products that celebrate LGBTQ+ identities and provide a space where everyone can find something meaningful. 
+                 Beyond our merchandise, we're a welcoming gathering place where individuals can connect and embrace their true selves. 
+                 We take pride in being more than just a store; we're a community center, a source of empowerment, and a beacon of love and acceptance for all.
+
+
+
+
+
             </p>
           </div>
           <!-- Grid column -->
@@ -77,17 +84,17 @@
             <h6 class="text-uppercase fw-bold mb-4">
               Useful links
             </h6>
-            <p>
-                <router-link to="/"><i class="uil uil-home"></i>Home</router-link>
+            <p class="linking">
+                <router-link to="/"><i class="uil uil-home" id="uil"></i>Home</router-link>
             </p>
-            <p>
-                <router-link to="/about"><i class="uil uil-info-circle"></i>About</router-link>
+            <p class="linking"> 
+                <router-link to="/about"><i class="uil uil-info-circle" id="uil"></i>About</router-link>
             </p>
-            <p>
-                <router-link to="/books"><i class="uil uil-compass"></i>Products</router-link>
+            <p class="linking">
+                <router-link to="/books"><i class="uil uil-compass " id="uil"></i>Products</router-link>
             </p>
-            <p>
-                <router-link to="/contact"><i class="uil uil-compass"></i>Contact</router-link>
+            <p class="linking">
+                <router-link to="/contact"><i class="uil uil-compass" id="uil"></i>Contact</router-link>
             </p>
           </div>
           <!-- Grid column -->
@@ -112,7 +119,7 @@
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color:pink;">
       © 2023 Copyright:
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">InkCascade</a>
+      <a class="text-reset fw-bold" >QueerQuarters</a>
     </div>
     <!-- Copyright -->
   </footer>
@@ -134,6 +141,10 @@
 footer {
     background-color:pink;
 }
+.p.linking {
+    color: black !important;
+}
+
    /* a{
      animation:backInUp!important;
      animation-duration: 2s!important;
