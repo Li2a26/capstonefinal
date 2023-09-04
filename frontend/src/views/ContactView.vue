@@ -1,7 +1,9 @@
 <template>
-    <div>
+  <div>
+    <div class="container">
+      <div class="lisa">
         <form action="https://formspree.io/f/xoqzganj" method="POST">
-      <h1 class="contact">Contact Me!</h1>
+      <h1 class="contact">Contact us<i class="fa-solid fa-phone"></i></h1>
       <br>
       <div class="mt-1 col-md-4 m-auto">
         <div class="form-floating animate__animated animate__zoomIn">
@@ -55,8 +57,11 @@
       </div>
     </form>
     <br />
+  </div>
     
     </div>
+  </div>
+    
     
   </template>
   
@@ -68,7 +73,7 @@
   float: left;
   justify-items: center;
   justify-content: center;
-  color: antiquewhite;
+  color:  purple;
 }
 .btn1 {
     border-radius: 5px !important;
@@ -93,18 +98,24 @@
     color: black;
     transition: 500ms;
   }
-  #app {
-    background-color:sienna !important;
-  }
+  
   .form-control {
-    background-color: antiquewhite;
+    background-color: rgb(232, 161, 232);
     border-radius: 10px;
     border-color: lightpink;
   }
   .form-control:hover {
     background-color: lightpink;
   }
+  /* form {
+    border: 20px solid black;
+    width: 800px;
+  } */
   .color {
   background-color: white;
 }
-  </style>
+
+
+
+
+</style>

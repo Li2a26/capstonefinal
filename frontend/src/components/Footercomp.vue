@@ -49,12 +49,6 @@
                 Queer Quarters is a haven of vibrant expression and inclusivity. 
                 We offer a diverse selection of products that celebrate LGBTQ+ identities and provide a space where everyone can find something meaningful. 
                  Beyond our merchandise, we're a welcoming gathering place where individuals can connect and embrace their true selves. 
-                 We take pride in being more than just a store; we're a community center, a source of empowerment, and a beacon of love and acceptance for all.
-
-
-
-
-
             </p>
           </div>
           <!-- Grid column -->
@@ -140,6 +134,10 @@
 
 footer {
     background-color:pink;
+
+}
+.footer.text-center.text-lg-start.text-muted.ftr {
+  height: 300px !important;
 }
 .p.linking {
     color: black !important;
