@@ -12,7 +12,12 @@ import Footercomp from './components/Footercomp.vue';
 export default {
   components: {
     NavbarComp, Footercomp,
-}
+},
+mounted() {
+    this.$store.dispatch("getProducts").then(() => {
+      this.products = this.$store.state.products;
+    });
+  },
 }
 
 </script>

@@ -1,121 +1,136 @@
 <template>
-  <div>
-    <div class="container">
-      <div class="lisa">
-        <form action="https://formspree.io/f/xoqzganj" method="POST">
-      <h1 class="contact">Contact us<i class="fa-solid fa-phone"></i></h1>
-      <br>
-      <div class="mt-1 col-md-4 m-auto">
-        <div class="form-floating animate__animated animate__zoomIn">
-          <input
-            type="name"
-            name="name"
-            class="form-control"
-            id="floatingInputGrid"
-            placeholder="Name"
-            requiredoninvalid="this.setCustomValidity('Please Enter Your Name')"
-            oninput="this.setCustomValidity('')"
-          />
-          <label for="floatingInputGrid">Enter Your Name</label>
-        </div>
-      </div>
-      <p></p>
-      <div class="col-md-4 m-auto animate__animated animate__zoomIn">
-        <div class="form-floating">
-          <input
-            type="email"
-            name="email"
-            class="form-control"
-            id="floatingInputGrid"
-            placeholder="mbuwalisa@gmail.com"
-            required
-            oninvalid="this.setCustomValidity('Please Enter Your Email')"
-            oninput="this.setCustomValidity('')"
-          />
-          <label for="floatingInputGrid">Email address</label>
-        </div>
-      </div>
-      <p></p>
-      <div class="col-md-4 m-auto animate__animated animate__zoomIn">
-        <div class="form-floating">
-          <textarea
-            name="message"
-            class="form-control"
-            placeholder="Leave a comment here"
-            id="floatingTextarea2"
-            style="height: 100px"
-            required
-            oninvalid="this.setCustomValidity('Please Enter Your Comment')"
-            oninput="this.setCustomValidity('')"
-          ></textarea>
-          <label for="floatingTextarea2">Comments</label>
-        </div>
-      </div>
-      <p></p>
-      <div class="col-md-4 m-auto animate__animated animate__zoomIn">
-        <button type="submit" class="btn1">Submit</button>
-      </div>
-    </form>
-    <br />
-  </div>
-    
-    </div>
-  </div>
-    
-    
-  </template>
   
-  <script>
-  export default {};
-  </script>
-  <style scoped>
-.contact{
-  float: left;
-  justify-items: center;
-  justify-content: center;
-  color:  purple;
-}
-.btn1 {
-    border-radius: 5px !important;
-    border-color: antiquewhite;
-    background-color: lightpink;
-    border-color: lightcoral 10px;
-    margin: 12px;
-    height: 50px;
-    width: 120px;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    font-family: "Damion", cursive;
-    border: none;
-    font-size: 16px;
-    color: black;
-    transition: 500ms;
-  }
-  .btn1:hover {
-    box-shadow: -5px -5px 15px antiquewhite, 5px 5px 15px antiquewhite,
-      inset 5px 5px 10px lightcoral, inset -5px -5px 10px lightcoral;
-    color: black;
-    transition: 500ms;
-  }
+  <div class="row p-3 media">
+    <h1 class="p-4 text-center heading-text">Contact Us !</h1>
+
+    <div class="my-3 d-flex justify-content-center">
+      <div class="m-2 p-2 col-7 card blue-bg light-border light-text media-2">
+        <form action="https://formspree.io/f/xqkvbqaj" method="POST" class="p-3">
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name(s): *</label>
+            <input
+              v-model="fullName"
+              type="text"
+              id="fullName"
+              name="Full Name"
+              class="form-control p-2 light-bg"
+              placeholder="eg: MonalisaMbuwa"
+              required
+              oninvalid="this.setCustomValidity('Please enter your full name.')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
   
-  .form-control {
-    background-color: rgb(232, 161, 232);
-    border-radius: 10px;
-    border-color: lightpink;
-  }
-  .form-control:hover {
-    background-color: lightpink;
-  }
-  /* form {
-    border: 20px solid black;
-    width: 800px;
-  } */
-  .color {
-  background-color: white;
+          <div class="mb-3">
+            <label for="email" class="form-label">Email: *</label>
+            <input
+              v-model="email"
+              type="text"
+              id="email"
+              name="Email"
+              class="form-control p-2 light-bg"
+              placeholder="eg: mbuwalisa@gmail.com"
+              required
+              oninvalid="this.setCustomValidity('Please enter a valid email address.')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
+  
+          <div class="mb-3">
+            <label for="message" class="form-label">Message:</label>
+            <textarea
+              v-model="message"
+              id="message"
+              name="Message"
+              class="form-control p-2 light-bg"
+              rows="5"
+              placeholder="Leave us a message!"
+            ></textarea>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <button type="submit" class="btn m-2 p-2 sub-btn">Submit!</button>
+            <button type="reset" class="btn m-2 p-2 clr-btn">Clear</button>
+          </div>
+        </form>
+      </div>
+      </div>
+  
+   
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      fullName: "",
+      email: "",
+      message: "",
+    };
+  },
+};
+</script>
+
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+.heading-text {
+  font-family:'Times New Roman', Times, serif;
+}
 
+.gold-text {
+  color:pink;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.text-fix {
+  font-size: 125%;
+}
+
+.blue-bg {
+  background: #e587ec;
+  color: black;
+}
+
+.purple-bg {
+  background: #2D1128;
+  color: #f4f4f4;
+}
+
+.light-border {
+  border: 2px solid #f4f4f4;
+}
+
+.light-bg {
+  background: #f4f4f4;
+}
+
+.sub-btn,
+.clr-btn {
+  background: rgb(255, 192, 203);
+  color: #010111;
+  border: 3px solid #010111;
+  box-shadow: 0 0 0 0 transparent;
+  
+ 
+}
+
+.sub-btn:hover,
+.clr-btn:hover {
+  box-shadow: 0 0 15px 2.5px plum;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+a {
+  text-decoration: none;
+  color: #f4f4f4;
+}
 
 
 </style>

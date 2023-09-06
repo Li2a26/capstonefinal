@@ -93,6 +93,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -107,7 +108,6 @@ export default {};
 .container.one,
 .container.two.d-flex.justify-content-center.align-content-center {
   padding-top: 7%;
-  /* padding-bottom: 7%; */
   text-align: center;
 }
 
@@ -130,7 +130,7 @@ export default {};
   text-align: center;
   font-family: Inter;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   -webkit-text-stroke: 1px #d188cd;
 }
@@ -140,7 +140,7 @@ p {
   text-align: center;
   font-family: Inter;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   -webkit-text-stroke: 0.5px #995c23;
 }
