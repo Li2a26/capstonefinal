@@ -88,6 +88,18 @@
     </div>  
  
   </template>
+  <script>
+  // @ is an alias to /src
+  
+  // import NavbarComp from '@/components/NavbarComp.vue';
+  // import Footercomp from '@/components/Footercomp.vue'
+  export default {
+    name: 'HomeView',
+    components: {
+        // NavbarComp
+    }
+  }
+  </script>
 <style scoped>
 /* Import Montserrat font */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
@@ -335,18 +347,4 @@ button:hover{
 
 </style>
 
-   
-    
- 
-<script>
-// @ is an alias to /src
-
-import NavbarComp from '@/components/Navbarcomp.vue';
-// import Footercomp from '@/components/Footercomp.vue'
-export default {
-  name: 'HomeView',
-  components: {
-      NavbarComp
-  }
-}
-</script> 
+  

@@ -35,7 +35,7 @@
     >
       <div class="row">
         <div class="col-6">
-          <h3 class="grow">Our Commitment</h3>
+          <h3 class="self">Our Commitment</h3>
           <p>
             We are committed to providing a safe, judgment-free space where
             everyone can shop with confidence, knowing that they are seen,
@@ -73,7 +73,7 @@
           />
         </div>
         <div class="col-6">
-          <h3 class="grow">The journey so far</h3>
+          <h3 class="self">The journey so far</h3>
           <p>
             Our journey has been filled with love, learning, and growth. Over
             the years, we've had the privilege of serving and connecting with
@@ -138,16 +138,13 @@ export default {};
 p {
   color: #d188cd;
   text-align: center;
-  font-family: Inter;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
   -webkit-text-stroke: 0.5px #995c23;
 }
 
-.grow.up {
-  padding-top: 12%;
-}
+
 @media screen and (min-width: 300px) and (max-width: 760px) {
   *{
     overflow: hidden;

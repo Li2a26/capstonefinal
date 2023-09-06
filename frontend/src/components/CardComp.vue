@@ -34,7 +34,7 @@ export default {
 };
 </script>
   <style>
-#body {
+/* #body {
   position: relative;
   width: 200px !important;
   height: 200px !important;
@@ -127,7 +127,7 @@ export default {
   height: 300px !important;
   transition: 1s;
   /* border-radius: 50px; */
-}
+/* }
 .picture:hover {
   transition: 1s;
 
@@ -140,7 +140,7 @@ export default {
   transition: 1s;
   margin-left: 0px !important;
   /* border-radius: 50px; */
-}
+/* 
 #body:hover {
   transition: 2s;
   height: 370px !important;
@@ -187,10 +187,10 @@ export default {
 
 .addbtn:active {
   scale: 1;
-}
-/* .oak {
+} 
+ .oak {
     display: flex !important;
-  } */
+  } */ 
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Nanum+Gothic&family=Playfair:ital,wght@1,300&family=Quicksand&family=Roboto:ital,wght@1,300&display=swap");
 </style>
