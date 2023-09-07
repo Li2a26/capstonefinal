@@ -1,6 +1,8 @@
 
 <template>
-  
+
+  <div>
+    
   <div class="home">
     <div class="hero">
       <h1 class="head">Welcome to Queer Quarters store</h1>
@@ -86,6 +88,7 @@
         </div>
        </div>
     </div>  
+  </div>
  
   </template>
   <script>

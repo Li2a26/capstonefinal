@@ -35,6 +35,9 @@
                     <router-link to="/contact">Contact</router-link>
                 </li>
                 <li id="fade-in">
+                    <router-link to="/admin">Admin</router-link>
+                </li>
+                <li id="fade-in">
                     <router-link to="/cart">Cart</router-link>
                 </li>
                 <li class="nav-item dropdown"> <!-- Add 'dropdown' class to create a dropdown menu -->
