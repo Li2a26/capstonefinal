@@ -6,7 +6,7 @@
 
 
 <script>
-import NavbarComp from './components/NavbarComp.vue';
+import NavbarComp from './components/Navbarcomp.vue';
 import Footercomp from './components/Footercomp.vue';
 
 export default {
