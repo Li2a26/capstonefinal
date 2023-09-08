@@ -155,7 +155,7 @@ const { createToken } = require("../middleware/AuthenticateUser");
   const fetchUsers = (req, res) => {
     const query = `
         SELECT userID, firstName, lastName,
-        gender, userDOB, userRole, emailAdd,
+        userDOB, userRole, emailAdd,
         userPass, profileUrl
         FROM users;
         `;
@@ -171,7 +171,7 @@ const { createToken } = require("../middleware/AuthenticateUser");
   const fetchUser = (req, res) => {
     const query = `
         SELECT userID, firstName, lastName,
-        gender, userDOB, userRole, emailAdd,
+        userDOB, userRole, emailAdd,
         profileUrl
         FROM users
         WHERE userID = ${req.params.id};
