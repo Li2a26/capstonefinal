@@ -32,9 +32,9 @@ const userController = require("../controller/users")
 const {
   showUsers,
   showUserById,
-  createUser,
-  deleteUser,
-  updateUser,
+  createRegister,
+  deleteUserById,
+  updateUserById,
 } = userController;
 // const { userLogin } = require("../model/users");
 
