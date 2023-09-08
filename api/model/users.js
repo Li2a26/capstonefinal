@@ -155,7 +155,7 @@ const { createToken } = require("../middleware/AuthenticateUser");
   const fetchUsers = (req, res) => {
     const query = `
         SELECT userID, firstName, lastName,
-        userDOB, userRole, emailAdd,
+        userDOB, emailAdd,
         userPass, profileUrl
         FROM users;
         `;
