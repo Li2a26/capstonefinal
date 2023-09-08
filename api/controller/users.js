@@ -261,15 +261,16 @@
 // }
 // module.exports = users;
 const {
-  getUsers,
-  getUserById,
+  fetchUsers,
+  fetchUserById,
   register,
   login,
   updateUser,
   deleteUser,
 } = require("../model/users");
 const showUsers = (req, res) => {
-  getUsers((err, results) => {
+  
+  fetchUsers((err, results) => {
     if (err) {
       res.status(500).json({ error: "Internal server error" });
     } else {
@@ -279,7 +280,7 @@ const showUsers = (req, res) => {
 };
 const showUserById = (req, res) => {
   const id = req.params.id;
-  getUserById(id, (err, result) => {
+  fetchUserById(id, (err, result) => {
     if (err) {
       res.status(500).json({ error: "Internal server error" });
     } else {
