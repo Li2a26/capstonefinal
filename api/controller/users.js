@@ -267,7 +267,7 @@ const {
   login,
   updateUser,
   deleteUser,
-} = require("../models/users");
+} = require("../model/users");
 const showUsers = (req, res) => {
   getUsers((err, results) => {
     if (err) {
