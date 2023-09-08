@@ -268,7 +268,7 @@ const {
   login,
   updateUser,
   deleteUser,
-} = require("../model/Users");
+} = require("../model/users");
 
 // const {users} = require('../model/index');
 
