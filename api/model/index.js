@@ -1,1 +1,4 @@
-const users = ('./users.js')
+const Users = ('./users.js')
+module.exports = {
+    users: new Users(),
+}

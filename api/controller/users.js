@@ -260,6 +260,7 @@
 //   }
 // }
 // module.exports = users;
+
 const {
   fetchUsers,
   fetchUserById,
@@ -267,10 +268,13 @@ const {
   login,
   updateUser,
   deleteUser,
-} = require("../model/users");
+} = require("../model/Users");
+
+// const {users} = require('../model/index');
+
 const showUsers = (req, res) => {
-  
-  fetchUsers((err, results) => {
+  // console.log('test')
+  fetchUsers(req, res, (err, results) => {
     if (err) {
       res.status(500).json({ error: "Internal server error" });
     } else {
