@@ -1,26 +1,5 @@
 <template>
-    <div>
-      <div v-if="users">
-        <div class="row table">
-          <div class="col-12">
-            <h1>Users</h1>
-          </div>
-          <div class="col">
-            <table class="table is-striped is-bordered mt-2 is-fullwidth array-lists">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Profile</th>
-                  <th>Name</th>
-                  <th>Surname</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Edit/Delete</th>
-                  <th>View Profile</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="user in users" :key="user.userID" class="bord">
+   <tr  class="boredom">
                   <td>{{ user.userID }}</td>
                   <td><img class="tableImg" :src="user.userProfile" alt="" /></td>
                   <td>{{ user.firstName }}</td>
@@ -34,17 +13,10 @@
                   </td>
                   <td>
                     <button>
-                      <router-link :to="{ name: 'user', params: { id: user.userID } }"> View </router-link>
+                      <!-- <router-link :to="{ name: 'user', params: { id: user.userID } }"> View </router-link> -->
                     </button>
                   </td>
                 </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <loading-spinner v-else />
-    </div>
   </template>
   
   <script>
@@ -54,19 +26,11 @@
   import LoadingSpinner from '@/components/LoadingSpinner.vue';
 
   export default {
-      // props: ["users"],
-      computed: {
-          users() {
-              return this.$store.state.users
-          }
-      },
-  
-      mounted() {
-          this.$store.dispatch("getUsers")
-      },
+      props: ["user"],
+    
   
   
-      components: { LoadingSpinner},
+      // components: { LoadingSpinner},
   }
   </script>
   <style>

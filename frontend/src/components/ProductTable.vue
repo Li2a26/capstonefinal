@@ -9,7 +9,7 @@
             </button>
           </div>
           <div class="col">
-            <table class="table is-striped is-bordered mt-2 is-fullwidth array-listsarray-lists text-align-center" @submit="deleteProduct">
+            <table class="table is-striped is-bordered mt-2 is-fullwidth  text-align-center" @submit="deleteProduct">
               <thead>
                 <tr>
                   <th>#</th>
@@ -21,9 +21,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="product in products" :key="product.prodID" class="bord">
-                  <td>{{ product.prodID }}</td>
-                  <td><img class="tableImg" :src="product.prodUrl" alt="" /></td>
+                <tr v-for="product in products" :key="product.productID" class="boredom">
+                  <td>{{ product.productID }}</td>
+                  <td><img class="tableImg" :src="product.productUrl" alt="" /></td>
                   <td>{{ product.productNAME }}</td>
                   <td>R {{ product.productPRICE }}</td>
                   <td>{{ product.productDESC }}</td>
@@ -35,7 +35,7 @@
                     <button
                       type="submit"
                       class="btn btton"
-                      @click="deleteProduct(product.prodID)"
+                      @click="deleteProduct(product.productID)"
                       id="delete-row"
                     >
                       Delete
@@ -58,12 +58,12 @@
   export default {
   // props: ["products"],
   computed: {
-  products() {
+  product() {
     return this.$store.state.products
   },
-  userRole() {
-    return this.$store.state.userRole;
-  },
+  // userRole() {
+  //   return this.$store.state.userRole;
+  // },
 },
   
   mounted() {

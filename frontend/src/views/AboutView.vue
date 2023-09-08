@@ -141,7 +141,7 @@ p {
   font-size: 20px;
   font-weight: 300;
   line-height: normal;
-  -webkit-text-stroke: 0.5px #995c23;
+
 }
 
 

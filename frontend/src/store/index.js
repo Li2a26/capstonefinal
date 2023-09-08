@@ -46,7 +46,7 @@ export default createStore({
     // },
     getProduct: async (context, id) => {
       try {
-        const response = await fetch(`https://lisambuwa.onrender.com/product/${id}`);
+        const response = await fetch(`https://lisambuwa.onrender.com/products/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch product");
         }

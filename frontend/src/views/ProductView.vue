@@ -12,7 +12,7 @@
             <div class="card-body m-2">
               <p>{{ product.productDESC }}</p>
               <p>R {{ product.productPRICE }}</p>
-              <p>Quantity: {{ product.quantity }} In Stock</p>
+              <!-- <p>Quantity: {{ product.quantity }} In Stock</p> -->
               <button @click="addToCart(product.productID)">Add to Cart</button>
             </div>
           </div>

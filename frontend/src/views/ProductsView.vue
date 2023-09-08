@@ -77,7 +77,7 @@ export default {
     return {
       selectedCategory: "", // Holds the selected category
       filteredProducts: [], // Holds the filtered products
-      categories: ["Necklace", "Watch", "Earrings", "Ring"],
+      categories: ["Bag", "Flag", "T-SHIRT",],
       searchQuery: "",
       sortOrder: "asc",
       isLoading: true,
