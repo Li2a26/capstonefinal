@@ -28,14 +28,14 @@ router.delete("/products/:id", deleteProduct);
 router.put("/products/:id", updateProduct);
 
 // USER ROUTES
-
+const userController = require("../controller/users")
 const {
   showUsers,
   showUserById,
   createUser,
   deleteUser,
   updateUser,
-} = require("../controller/users");
+} = userController;
 // const { userLogin } = require("../model/users");
 
 //get all users
@@ -45,13 +45,12 @@ router.get("/users", showUsers);
 router.get("/users/:id", showUserById);
 
 //create a new user
-router.post("/users", createUser);
-
+router.post("/users", createRegister);
 // Delete a user
-router.delete("/users/:id", deleteUser);
+router.delete("/users/:id",  deleteUserById);
 
 // Update a user
-router.put("/users/:id", updateUser);
+router.put("/users/:id", updateUserById);
 
 //login
 // router.post("/user/login", userLogin);
