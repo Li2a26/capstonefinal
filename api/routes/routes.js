@@ -36,7 +36,10 @@ const {
   deleteUserById,
   updateUserById,
 } = userController;
-// const { userLogin } = require("../model/users");
+
+const Users = require("../model/users");
+const users = new Users();
+const bodyParser = require("body-parser");
 
 //get all users
 router.get("/users", showUsers);
@@ -45,7 +48,14 @@ router.get("/users", showUsers);
 router.get("/users/:id", showUserById);
 
 //create a new user
-router.post("/users", createRegister);
+router.post("/register", bodyParser.json(), (req, res) => {
+  users.register(req, res);
+});
+
+//login a user
+router.post("/login", bodyParser.json(), (req, res) => {
+  users.login(req, res);
+});
 // Delete a user
 router.delete("/users/:id",  deleteUserById);
 

@@ -1,7 +1,7 @@
 //db.js
 require("dotenv").config();
 
-const { createPool } = require("mysql");
+const { createPool } = require("mysql2");
 // Create connection variable
 const connection = createPool({
   host: process.env.dbHost,
@@ -10,7 +10,17 @@ const connection = createPool({
   port: process.env.dbPort,
   database: process.env.dbName,
   multipleStatements: true,
-  connectionLimit: 30,
+  waitForConnections: true, 
+  queueLimit: 0,
+  connectionLimit: 100,
 });
+
+connection.getConnection((error) =>{
+  if(error){
+      console.log(error);
+  } else{
+      console.log("Database connected successfully");
+  }
+})
 
 module.exports = connection;
