@@ -42,49 +42,49 @@
 </template>
 <script>
 
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
-export default {
-  data() {
-    return {
-      emailAdd: "",
-      userPass: "",
-    };
-  },
-  beforeCreate() {
-    this.$store.dispatch("cookieCheck");
-  },
-  methods: {
-    async userLogin() {
-      console.log("Reached");
-      try {
-        const payload = {
-          emailAdd: this.emailAdd,
-          userPass: this.userPass,
-        };
-        const resp = await this.$store.dispatch("login", payload);
-        console.log(resp)
-        if (resp.success === true && resp.token && resp.result) {
-          await Swal.fire({
-            icon: "success",
-            title: "Logged in Successfully",
-            text: "You are now logged in!",
-          });
-          this.$router.push("/");
-        } else {
-          const errMsg = "Unexpected error";
-          await Swal.fire({
-            icon: "error",
-            title: "Login failed",
-            text: errMsg,
-          });
-        }
-      } catch (e) {
-        console.error("Error while logging in: ", e);
-      }
-    },
-  },
-}
+// export default {
+  // data() {
+//     return {
+//       emailAdd: "",
+//       userPass: "",
+//     };
+//   },
+//   beforeCreate() {
+//     this.$store.dispatch("cookieCheck");
+//   },
+//   methods: {
+//     async userLogin() {
+//       console.log("Reached");
+//       try {
+//         const payload = {
+//           emailAdd: this.emailAdd,
+//           userPass: this.userPass,
+//         };
+//         const resp = await this.$store.dispatch("login", payload);
+//         console.log(resp)
+//         if (resp.success === true && resp.token && resp.result) {
+//           await Swal.fire({
+//             icon: "success",
+//             title: "Logged in Successfully",
+//             text: "You are now logged in!",
+//           });
+//           this.$router.push("/");
+//         } else {
+//           const errMsg = "Unexpected error";
+//           await Swal.fire({
+//             icon: "error",
+//             title: "Login failed",
+//             text: errMsg,
+//           });
+//         }
+//       } catch (e) {
+//         console.error("Error while logging in: ", e);
+//       }
+//     },
+//   },
+// }
 </script>
 <style scoped>
 
