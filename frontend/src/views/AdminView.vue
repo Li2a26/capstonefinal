@@ -19,7 +19,7 @@
                 </tr>
               </thead>
               <tbody v-if="users">
-                <UserTable v-for="user of users" :key="user.userID" :user="user"/>
+                <UserTable :users="users"/>
               </tbody>
               <loading-spinner v-else />
             </table>
