@@ -85,7 +85,7 @@
                 <router-link to="/about"><i class="uil uil-info-circle" id="uil"></i>About</router-link>
             </p>
             <p class="linking">
-                <router-link to="/books"><i class="uil uil-compass " id="uil"></i>Products</router-link>
+                <!-- <router-link to="/books"><i class="uil uil-compass " id="uil"></i>Products</router-link> -->
             </p>
             <p class="linking">
                 <router-link to="/contact"><i class="uil uil-compass" id="uil"></i>Contact</router-link>

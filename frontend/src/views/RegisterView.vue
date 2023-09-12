@@ -1,61 +1,4 @@
-<template lang="">
-    <!-- <div class="all" >
-        <div class="container d-flex justify-content-center text-align-center align-items-center" >
-<div class="card">
-    <div class="row d-flex justify-content-center text-align-center align-items-center">
-    <div class="col">
-        
-        <h1> Register </h1>
-
-        <form class="form-inline" action="/action_page.php" @submit.prevent="register">
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="name" class="form-control" id="firstName" placeholder="Your Name" v-model="firstName">
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="surname" class="form-control" id="lastName" placeholder="Surname" v-model="lastName">
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="role" class="form-control" id="userRole" placeholder="eg. Admin" v-model="userRole">
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" class="form-control" id="emailAdd" placeholder="@gmail.com" v-model="emailAdd">
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="userPass" placeholder="Enter password" v-model="userPass">
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="picture" class="form-control" id="userProfile" placeholder="url" v-model="userProfile">
-  </div>
-  <div class="checkbox">
-    <label><input type="checkbox"> Save Info</label>
-  </div>
-  <button type="submit" class="btn btn-default">Register</button>
-</form>
-
-
-    </div>
-    <div class="col">
-      <img class="mona" src="https://i.postimg.cc/PJmgDy6m/man-with-a-pride-flag-posing-on-white-background-androgynous-man-in-crop-top-posing-in-studio-JLPSF0.jpg" alt="">
-    </div>
-  </div>
-</div>
-
-        </div>
-
-
-        
-    </div> -->
+<template>
   <div class="registration">
     <h2 class="text-center">Register</h2>
     <form @submit.prevent="registerUser">
@@ -64,7 +7,7 @@
         <input
           type="text"
           id="firstName"
-          v-model="form.firstName"
+          v-model="forms.firstName"
           required
           class="input"
         />
@@ -74,25 +17,25 @@
         <input
           type="text"
           id="lastName"
-          v-model="form.lastName"
+          v-model="forms.lastName"
           required
           class="input"
         />
       </div>
       <div class="form-group">
         <label for="gender">Gender:</label>
-        <input type="text" id="gender" v-model="form.gender" class="input" />
+        <input type="text" id="gender" v-model="forms.gender" class="input" />
       </div>
       <div class="form-group">
         <label for="userDOB">Date of Birth:</label>
-        <input type="date" id="userDOB" v-model="form.userDOB" class="input" />
+        <input type="date" id="userDOB" v-model="forms.userDOB" class="input" />
       </div>
       <div class="form-group">
         <label for="userRole">User Role:</label>
         <input
           type="text"
           id="userRole"
-          v-model="form.userRole"
+          v-model="forms.userRole"
           class="input"
         />
       </div>
@@ -101,7 +44,7 @@
         <input
           type="email"
           id="emailAdd"
-          v-model="form.emailAdd"
+          v-model="forms.emailAdd"
           required
           class="input"
         />
@@ -111,7 +54,7 @@
         <input
           type="password"
           id="userPass"
-          v-model="form.userPass"
+          v-model="forms.userPass"
           required
           class="input"
         />
@@ -121,7 +64,7 @@
         <input
           type="text"
           id="profileUrl"
-          v-model="form.profileUrl"
+          v-model="forms.profileUrl"
           class="input"
         />
       </div>
@@ -135,7 +78,7 @@
 export default {
   data() {
     return {
-      form: {
+      forms: {
         firstName: "",
         lastName: "",
         gender: "",
@@ -149,25 +92,47 @@ export default {
     };
   },
   methods: {
+    // async registerUser() {
+    //   // this.registrationError = null;
+    //   // console.log(this.registrationError);
+    //   try {
+    //     form = {
+    //     firstName: this.forms.firstName,
+    //     lastName: this.forms.lastName,
+    //     gender: this.forms.gender,
+    //     userDOB: this.forms.userDOB,
+    //     userRole: this.forms.userRole,
+    //     emailAdd: this.forms.emailAdd,
+    //     userPass: this.forms.userPass,
+    //     profileUrl: this.forms.profileUrl
+    //   };
+    //     // const response = await this.$store.dispatch("registerUser", this.form);
+    //     this.$store.dispatch("registerUser", form);
+    //     console.log(response);
+    //     this.$router.push("/login");
+    //   } catch (error) {
+    //     this.registrationError =
+    //       "Registration failed. Please check your inputs and try again.";
+    //   }
+    // },
     async registerUser() {
-      this.registrationError = null;
-      console.log(this.registrationError);
-      try {
-        const response = await this.$store.dispatch("registerUser", this.form);
-        console.log(response);
-        this.$router.push("/login");
-      } catch (error) {
-        this.registrationError =
-          "Registration failed. Please check your inputs and try again.";
-      }
+        const form = {
+          firstName: this.forms.firstName,
+          lastName: this.forms.lastName,
+          gender: this.forms.gender,
+          userDOB: this.forms.userDOB,
+          userRole: this.forms.userRole,
+          emailAdd: this.forms.emailAdd,
+          userPass: this.forms.userPass,
+          profileUrl: this.forms.profileUrl
+        };
+        this.$store.dispatch("registerUser", form);
+        console.log(form);
+        this.$router.push("/login")
     },
   },
 };
 </script>
-REGISTERR
-
-
-
 
 <style scoped>
 

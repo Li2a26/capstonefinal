@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
-// import axios from "axios";
+import Swal from "sweetalert2";
+import axios from "axios";
 // import Cookies from "js-cookie";
 
 export default createStore({
