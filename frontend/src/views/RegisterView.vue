@@ -56,8 +56,8 @@
 
         
     </div> -->
-    <div class="registration">
-    <h2>Register</h2>
+  <div class="registration">
+    <h2 class="text-center">Register</h2>
     <form @submit.prevent="registerUser">
       <div class="form-group">
         <label for="firstName">First Name:</label>
@@ -126,25 +126,24 @@
         />
       </div>
       <button type="submit">Register</button>
+       <p> You have an account?<router-link to="login">Login</router-link></p>
     </form>
     <p v-if="registrationError" class="error">{{ registrationError }}</p>
-
   </div>
 </template>
-
-  <script>
+<script>
 export default {
   data() {
     return {
       form: {
         firstName: "",
         lastName: "",
-        gender: "", // Add gender field
-        userDOB: "", // Add userDOB field
-        userRole: "", // Add userRole field
+        gender: "",
+        userDOB: "",
+        userRole: "",
         emailAdd: "",
         userPass: "",
-        profileUrl: "", // Add profileUrl field
+        profileUrl: "",
       },
       registrationError: null,
     };
@@ -152,8 +151,10 @@ export default {
   methods: {
     async registerUser() {
       this.registrationError = null;
+      console.log(this.registrationError);
       try {
         const response = await this.$store.dispatch("registerUser", this.form);
+        console.log(response);
         this.$router.push("/login");
       } catch (error) {
         this.registrationError =
@@ -162,51 +163,8 @@ export default {
     },
   },
 };
-// import Swal from "sweetalert2";
-
-// export default {
-//   data() {
-//     return {
-//       firstName: "",
-//       lastName: "",
-//       userRole: "",
-//       emailAdd: "",
-//       userPass: "",
-//       userProfile: "",
-//     };
-//   },
-//   methods: {
-//     async register() {
-//       try {
-//         const resp = await this.$store.dispatch("register", {
-//           firstName: this.firstName,
-//           lastName: this.lastName,
-//           userRole: this.userRole,
-//           emailAdd: this.emailAdd,
-//           userPass: this.userPass,
-//           userProfile: this.userProfile,
-//         });
-//         if (resp.success) {
-//           await Swal.fire({
-//             icon: "success",
-//             title: "Registration successful",
-//             text: "You are now registered, please log in",
-//           });
-//         } else {
-//           await Swal.fire({
-//             icon: "error",
-//             title: "Registration failed",
-//             text: resp.error || "Unexpected error",
-//           });
-//         }
-//         this.$router.push("/login");
-//       } catch (e) {
-//         console.error("Registration error: ", e);
-//       }
-//     },
-//   },
-// };
 </script>
+REGISTERR
 
 
 

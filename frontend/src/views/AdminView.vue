@@ -25,8 +25,6 @@
             </table>
           </div>
         </div>
-      <!-- </div> -->
-    
     </div>
     <!-- <div>
         <div v-if="users">
@@ -48,12 +46,19 @@ export default {
     computed: {
           users() {
               return this.$store.state.users
-          }
+          },
+          // products() {
+          //     return this.$store.state.products
+          // }
+          
       },
   
       mounted() {
           this.$store.dispatch("getUsers")
       },
+      // mounted() {
+      //     this.$store.dispatch("getproducts")
+      // },
 }
 </script>
 <style scoped>
