@@ -1,20 +1,8 @@
 <template>
     <div>
-      
-    <input type="text" v-model="searchQuery" @input="performSearch" placeholder="Search products🔎" />
-    <select v-model="selectedCategory" @change="filter">
-      <option value="">All</option>
-      <option v-for="category in categories" :key="category">{{ category }}</option>
-    </select>
-    <select v-model="sortOrder" @change="sortProducts">
-      <option value="asc">Low to High</option>
-      <option value="desc">High to Low</option>
-    </select>
-
-
-
-    <!-- Display filtered products -->
-    <div v-for="product in filteredProducts" :key="product.productID">
+<!-- 
+<div class="card">
+  <div v-for="product in filteredProducts" :key="product.productID">
       <img :src="product.productUrl" alt="Product Image" class="product-image" />
         <h3>{{ product.productNAME }}</h3>
   <p> R {{ product.productPRICE }}</p>
@@ -24,52 +12,20 @@
   <p>Quantity: {{ product.quantity }}</p>
     </div>
     
+</div> -->
+    <!-- Display filtered products -->
+    
 
-    <div v-if="products" class="flex-container row row-cols-3">
+    <div v-if="products" class="d-flex justify-content-center">
         <CardComp :products="products" />
     </div>
     <!-- <loading-spinner v-else/> -->
   </div>
 
-   <!-- <div>
-    search
-    <input type="text" v-model="searchQuery" @input="performSearch" placeholder="Search products🔎" />
-    <div>
-
-      sort by price
-      <div>
-        
-      </div>
-
-<select v-model="sortOrder" @change="sortProducts">
-  <option value="asc">Low to High</option>
-  <option value="desc">High to Low</option>
-</select>
-      filter by category
-<select v-model="selectedCategory" @change="filter">
-      <option value="">All</option>
-      <option value="Necklaces">Necklaces</option>
-      <option v-for="category in categories" :key="category">{{ category }}</option>
-    </select>
-
-    <div v-for="product in filteredProducts" :key="product.prodID">
-        <img :src="product.prodUrl" alt="Product Image" class="product-image" />
-        <h3>{{ product.prodName }}</h3>
-  <p>Price: R {{ product.amount }}</p>
-  <p>Quantity: {{ product.quantity }}</p>
-  
-    </div>
-    </div>
-<div v-if="products" class="flex-container row row-cols-3">
-        <CardComp v-for="product of products" :key="product.prodID" :product="product" />
-    </div>
-    
-        <div v-else class="loader"></div>
-   </div> -->
 </template>
 <script>
 
-// import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import CardComp from '@/components/CardComp.vue';
 export default {
 
@@ -128,12 +84,12 @@ export default {
       this.products = this.$store.state.products;
     });
   },
-    components: {CardComp, },
+    components: {CardComp,  LoadingSpinner},
 }
 </script>
 <style>
 
-.cards {
+/* .cards {
 display: grid;
 grid-template-columns: repeat(3, 1fr);
 grid-template-rows: repeat(2, 1fr);
@@ -162,5 +118,5 @@ grid-column-gap: 0px;
 grid-row-gap: 0px;
 margin: 0px;
 }
-}
+} */
 </style>

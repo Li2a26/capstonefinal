@@ -25,6 +25,9 @@
             </table>
           </div>
         </div>
+        <div class="row">
+          <ProductTable/>
+        </div>
     </div>
     <!-- <div>
         <div v-if="users">
@@ -32,8 +35,9 @@
          
         </div>
         <loading-spinner v-else />
-        <ProductTable/>
+        
     </div> -->
+    
 </template>
 <script>
 

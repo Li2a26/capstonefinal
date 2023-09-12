@@ -207,7 +207,7 @@ export default createStore({
     },
     async getCart({ commit }) {
       try {
-        const response = await axios.get(`${baseUrl}cart`);
+        const response = await axios.get(`${dbConnection}cart`);
         commit("setCart", response.data);
       } catch (error) {
         console.error("Error fetching cart:", error);
@@ -219,7 +219,7 @@ export default createStore({
           console.error("Cart is not initialized.");
           return false;
         }
-        const response = await axios.post(`${baseUrl}cart`, product);
+        const response = await axios.post(`${dbConnection}cart`, product);
         console.log(product);
         if (response.status === 200) {
           commit("addToCart", response.data);
@@ -252,7 +252,7 @@ export default createStore({
     },
     async removeItem({ commit }, cartID) {
       try {
-        await axios.delete(`${baseUrl}cart/${cartID}`);
+        await axios.delete(`${dbConnection}cart/${cartID}`);
         commit("removeItem", cartID);
         console.log(cartID);
         Swal.fire({
@@ -284,7 +284,7 @@ export default createStore({
       { cartID, prodID, quantity }
     ) {
       try {
-        const response = await axios.patch(`${baseUrl}cart/${prodID}`, {
+        const response = await axios.patch(`${dbConnection}cart/${prodID}`, {
           quantity,
         });
         if (response.status === 200) {
@@ -336,6 +336,112 @@ export default createStore({
         });
       }
     },
+    //admin
+    async editProduct() {
+      try {
+        const editedProduct = {
+          prodPRICE: this.updatedProduct.prodPRICE,
+          prodNAME: this.updatedProduct.prodNAME,
+          prodDESC: this.updatedProduct.prodDESC,
+          prodCAT: this.updatedProduct.prodCAT,
+          prodTYPE: this.updatedProduct.prodTYPE,
+          prodSEASON: this.updatedProduct.prodSEASON,
+          prodIMG: this.updatedProduct.prodIMG,
+          prodQUANTITY: this.updatedProduct.prodQUANTITY,
+        };
+        const response = await axios.patch(
+          `${baseUrl}products/${this.updatedProduct.prodID}`,
+          editedProduct
+        );
+        if (response.status === 200) {
+          this.$store.dispatch("updateProduct", {
+            prodID: this.updatedProduct.prodID,
+            editedProduct: response.data,
+          });
+          Swal.fire({
+            icon: "success",
+            title: "Product Updated",
+            text: "The product has been updated successfully.",
+          });
+          this.resetForm();
+          $("#exampleModal").modal("hide");
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Update Failed",
+            text: "An error occurred while updating the product.",
+          });
+        }
+      } catch (error) {
+        console.error("Error editing product:", error);
+      }
+    },
+    async updateProduct({ commit }, { prodID, editedProduct }) {
+      try {
+        const response = await axios.patch(
+          `${baseUrl}products/${prodID}`,
+          editedProduct
+        );
+        if (response.status === 200) {
+          commit("updateProductInState", response.data);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Update Failed",
+            text: "An error occurred while updating the product.",
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: error.message,
+        });
+      }
+    },
+  async addProduct({ commit }, newProduct) {
+      try {
+        const response = await axios.post(`${dbConnection}products`, newProduct);
+        if (response.status === 200) {
+          // Product added successfully
+          commit("clearMessages"); // Clear any previous error or success messages
+          return true;
+        } else {
+          commit("setErrMsg", "Error adding product");
+          return false;
+        }
+      } catch (error) {
+        commit("setErrMsg", `Error adding product: ${error.message}`);
+        return false;
+      }
+    },
+  async deleteProduct({ commit }, productID) {
+    try {
+      const response = await axios.delete(`${dbConnection}products/${productID}`);
+      if (response.status === 200) {
+        commit("setDeletedProduct", response.data);
+        await this.dispatch("getProducts");
+        Swal.fire({
+          icon: "success",
+          title: "Product Deleted",
+          text: "The product has been deleted successfully.",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Delete Failed",
+          text: "An error occurred while deleting the product.",
+        });
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: error.message,
+      });
+    }
+  },
     //Login
     async loginUser({ commit }, credentials) {
       try {

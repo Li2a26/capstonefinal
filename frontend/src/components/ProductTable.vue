@@ -1,5 +1,5 @@
 <template>
-    <div v-show="userRole === 'Admin'">
+    <div >
       <div class="body" v-if="products">
         <div class="row table-container">
           <div class="col-12">
@@ -58,7 +58,7 @@
   export default {
   // props: ["products"],
   computed: {
-  product() {
+  products() {
     return this.$store.state.products
   },
   // userRole() {

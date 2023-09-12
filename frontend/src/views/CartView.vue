@@ -1,13 +1,28 @@
-<template lang="">
+<template>
     <div>
-        
+      <div v-if="cart" class="row p-4 justify-content-evenly">
+        <cart />
+      </div>
+      <div v-else>Cart is empty.</div>
     </div>
-</template>
-<script>
-export default {
-    
-}
-</script>
-<style lang="">
-    
-</style>
+  </template>
+  <script>
+  import cart from "@/components/CartComp.vue";
+  export default {
+    computed: {
+      allCart() {
+        return this.$store.state.cart;
+      },
+      cart() {
+        return this.allCart || [];
+      },
+    },
+    // mounted() {
+    //   this.$store.dispatch("getCart");
+    // },
+    mounted() {
+      this.$store.dispatch("getCart");
+    },
+    components: { cart },
+  };
+  </script>
