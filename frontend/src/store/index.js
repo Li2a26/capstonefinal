@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import axios from "axios";
 // import Cookies from "js-cookie";
 
+const dbConnection = 'https://lisambuwa.onrender.com/';
+
 export default createStore({
   state: {
     products: null,
@@ -161,6 +163,7 @@ export default createStore({
           });
         }
       } catch (error) {
+        console.error("Network Error:", error);
         Swal.fire({
           icon: "error",
           title: "Error",
