@@ -3,9 +3,9 @@
       <div class="body" v-if="products">
         <div class="row table-container">
           <div class="col-12">
-            <h1>Products</h1>
-            <button>
-              <router-link to="/admin/add/product"> Add Product </router-link>
+            <h1>PRODUCTS</h1>
+            <button class="addp">
+              <router-link to="/admin/add/product" class="bb"> Add Product </router-link>
             </button>
           </div>
           <div class="col">
@@ -38,7 +38,15 @@
                       @click="deleteProduct(product.productID)"
                       id="delete-row"
                     >
-                      Delete
+                      🗑️
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn btton"
+                      @click="editProduct(product.productID)"
+                      id="add-row"
+                    >
+                      ✏️
                     </button>
                   </td>
                 </tr>
@@ -94,5 +102,16 @@
   .tableImg{
       width : 85px;
   }
+  .addp {
+    background-color:#d914e7;
+  border-radius: 20px; 
+  color: black !important;
+}
+.addp:hover {
+  background-color: pink;
+}
+.bb {
+  color: black;
+}
   
   </style>
