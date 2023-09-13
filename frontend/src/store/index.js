@@ -30,7 +30,9 @@ export default createStore({
     setUser: (state, user) => {
       state.user = user;
     },
-
+    registerUser: (state, userData) => {
+      state.users.push(userData);
+    },
     sortProducts: (state) => {
       state.products.sort((a, b) => {
         return a.Price - b.Price;
@@ -143,34 +145,34 @@ export default createStore({
     },
     //User
     //register
-    async registerUser({ commit }, userData) {
-      try {
-        const response = await axios.post("https://lisambuwa.onrender.com/register", userData);
-        const user = response.data;
-        commit("setUser", user);
-        if (response.status === 200) {
-          Swal.fire({
-            icon: "success",
-            title: "Registration Successful",
-            text: "You have successfully registered.",
-          });
-          this.$router.push("/login");
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Registration Failed",
-            text: "An error occurred during registration.",
-          });
-        }
-      } catch (error) {
-        console.error("Network Error:", error);
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: error.message,
-        });
-      }
-    },
+    // async registerUser({ commit }, userData) {
+    //   try {
+    //     const response = await axios.post("https://lisambuwa.onrender.com/register", userData);
+    //     const user = response.data;
+    //     commit("setUser", user);
+    //     if (response.status === 200) {
+    //       Swal.fire({
+    //         icon: "success",
+    //         title: "Registration Successful",
+    //         text: "You have successfully registered.",
+    //       });
+    //       this.$router.push("/login");
+    //     } else {
+    //       Swal.fire({
+    //         icon: "error",
+    //         title: "Registration Failed",
+    //         text: "An error occurred during registration.",
+    //       });
+    //     }
+    //   } catch (error) {
+    //     console.error("Network Error:", error);
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Error",
+    //       text: error.message,
+    //     });
+    //   }
+    // },
     //Login
     async loginUser({ commit }, credentials) {
       try {
@@ -313,8 +315,8 @@ export default createStore({
     async registerUser({ commit }, userData) {
       try {
         const response = await axios.post(`${dbConnection}register`, userData);
-        const user = response.data;
-        commit("setUser", user);
+        // const user = response.data;
+        commit("registerUser", userData);
         if (response.status === 200) {
           Swal.fire({
             icon: "success",
@@ -403,15 +405,15 @@ export default createStore({
       try {
         const response = await axios.post(`${dbConnection}products`, newProduct);
         if (response.status === 200) {
-          // Product added successfully
+          commit("setProduct", product,);// Product added successfully
           commit("clearMessages"); // Clear any previous error or success messages
           return true;
         } else {
-          commit("setErrMsg", "Error adding product");
+          // commit(err, "Error adding product");
           return false;
-        }
+        } 
       } catch (error) {
-        commit("setErrMsg", `Error adding product: ${error.message}`);
+        // commit(err, `Error adding product: ${error.message}`);
         return false;
       }
     },

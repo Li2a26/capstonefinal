@@ -6,7 +6,7 @@
         <input
           type="text"
           class="form-control"
-          v-model="newProduct.prodNAME"
+          v-model="newProduct.productNAME"
           required
         />
       </div>
@@ -15,7 +15,7 @@
         <input
           type="number"
           class="form-control"
-          v-model="newProduct.prodPRICE"
+          v-model="newProduct.productPRICE"
           required
         />
       </div>
@@ -23,7 +23,7 @@
         <label for="productDesc">Product Description</label>
         <textarea
           class="form-control"
-          v-model="newProduct.prodDESC"
+          v-model="newProduct.productDESC"
           required
         ></textarea>
       </div>
@@ -32,7 +32,7 @@
         <input
           type="text"
           class="form-control"
-          v-model="newProduct.prodCAT"
+          v-model="newProduct.productCAT"
           required
         />
       </div>
@@ -41,7 +41,7 @@
         <input
           type="text"
           class="form-control"
-          v-model="newProduct.prodTYPE"
+          v-model="newProduct.productTYPE"
           required
         />
       </div>
@@ -55,7 +55,7 @@
           required
         />
       </div>
-      <button type="submit" class="btn btn-primary" @click="submitForm()">
+      <button type="submit" class="btn btn-primary">
         Add Product
       </button>
     </form>
@@ -71,14 +71,12 @@ export default {
   data() {
     return {
       newProduct: {
-        prodNAME: "",
-        prodPRICE: 0,
-        prodDESC: "",
-        prodCAT: "",
-        prodTYPE: "",
-        prodSEASON: "",
-        productUrl: {
-      },
+        productNAME: "",
+        productPRICE: 0,
+        productDESC: "",
+        productCAT: "",
+        productTYPE: "",
+        productUrl: "",
         prodQUANTITY: 0,
       },
     };
@@ -91,25 +89,32 @@ export default {
       return this.$store.state.errMsg;
     },
   },
+  mounted() {
+    this.$store.dispatch("addProduct");
+  },
   methods: {
-    async submitForm() {
-      const result = await this.$store.dispatch("addProduct", this.newProduct);
-      console.log(this.newProduct);
-      if (result) {
-        await Swal.fire({
-          icon: "success",
-          title: "Success",
-          text: "Product added successfully",
-        });
-        window.location.reload();
-        this.clearForm();
-      } else {
-        await Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Error adding product",
-        });
-      }
+    // async submitForm() {
+    //   // const result = await this.$store.dispatch("addProduct", this.newProduct);
+    //   // console.log(this.newProduct);
+    //   if (result) {
+    //     await Swal.fire({
+    //       icon: "success",
+    //       title: "Success",
+    //       text: "Product added successfully",
+    //     });
+    //     window.location.reload();
+    //     this.clearForm();
+    //   } else {
+    //     await Swal.fire({
+    //       icon: "error",
+    //       title: "Error",
+    //       text: "Error adding product",
+    //     });
+    //   }
+    // },
+    addProduct(){
+      return this.$store.dispatch("addProduct", this.newProduct)
+
     },
     clearForm() {
       // Clear the form fields

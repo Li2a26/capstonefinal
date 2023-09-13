@@ -38,9 +38,9 @@ export default {
       // mounted() {
       //     this.$store.dispatch("getUsers")
       // },
-      // mounted() {
-      //     this.$store.dispatch("getproducts")
-      // },
+      mounted() {
+          this.$store.dispatch("getproducts")
+      },
 }
 </script>
 <style scoped>
