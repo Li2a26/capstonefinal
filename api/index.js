@@ -6,7 +6,7 @@ const app = express();
 
 app.use(
   express.json(),
-  cors({ origin: '*' }), // Allow requests from any origin
+  cors(),
   bodyParser.json(),
   bodyParser.urlencoded({ extended: true }),
   Router

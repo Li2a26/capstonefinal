@@ -49,7 +49,7 @@ router.get("/users/:id", showUserById);
 
 //create a new user
 router.post("/register", bodyParser.json(), (req, res) => {
-  users.register(req, res);
+  users.createRegister(req, res);
 });
 
 //login a user
