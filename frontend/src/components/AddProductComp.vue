@@ -55,7 +55,7 @@
           required
         />
       </div>
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" @click="addProduct" class="btn btn-primary">
         Add Product
       </button>
     </form>

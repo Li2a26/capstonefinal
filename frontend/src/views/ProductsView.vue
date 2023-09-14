@@ -19,7 +19,7 @@
     <div v-if="products" class="d-flex justify-content-center">
         <CardComp :products="products" />
     </div>
-    <!-- <loading-spinner v-else/> -->
+    <loading-spinner v-else/>
   </div>
 
 </template>

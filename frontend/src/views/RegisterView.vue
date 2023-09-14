@@ -35,7 +35,7 @@
 <br>
 <div class="form-group">
   <!-- <label for="pwd">Password:</label> -->
-  <input type="picture" class="form-control" id="userProfile" placeholder="url" v-model="userProfile">
+  <input type="picture" class="form-control" id="userProfile" placeholder="url" v-model="userUrl">
 </div>
 <button type="submit" class="btn btn-default">Register</button>
 </form>
@@ -43,7 +43,7 @@
 
   </div>
   <div class="col">
-    <img class="login" src="https://i.postimg.cc/PJmgDy6m/man-with-a-pride-flag-posing-on-white-background-androgynous-man-in-crop-top-posing-in-studio-JLPSF0.jpg" alt="">
+    <img class="hunny" src="https://i.postimg.cc/PJmgDy6m/man-with-a-pride-flag-posing-on-white-background-androgynous-man-in-crop-top-posing-in-studio-JLPSF0.jpg" alt="">
   </div>
 </div>
 </div>
@@ -66,19 +66,19 @@ data() {
     userRole: "",
     emailAdd: "",
     userPass: "",
-    userProfile: "",
+    userUrl: "",
   };
 },
 methods: {
   async register() {
     try {
-      const resp = await this.$store.dispatch("register", {
+      const resp = await this.$store.dispatch("registerUser", {
         firstName: this.firstName,
         lastName: this.lastName,
         userRole: this.userRole,
         emailAdd: this.emailAdd,
         userPass: this.userPass,
-        userProfile: this.userProfile,
+        userUrl: this.userUrl,
       });
       if (resp.success) {
         await Swal.fire({
@@ -162,6 +162,9 @@ background-color: #f6f4f2;
 border: pink 2px;
 
 text-align: center;
+}
+.hunny {
+  width: 100%;
 }
 
 

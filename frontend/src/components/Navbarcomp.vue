@@ -40,6 +40,9 @@
                 <li id="fade-in">
                     <router-link to="/cart">Cart</router-link>
                 </li>
+                <li id="fade-in">
+                    <router-link to="/checkout">Checkout</router-link>
+                </li>
                 <li class="nav-item dropdown"> <!-- Add 'dropdown' class to create a dropdown menu -->
                     <a class="nav-link dropdown-toggle" href="#" id="loginRegisterDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user"></i> <!-- Add an icon, for example, using Font Awesome -->

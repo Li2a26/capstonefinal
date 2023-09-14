@@ -55,6 +55,10 @@
           </div>
         </div>
       </div>
+      <div v-else class="d-flex justify-content-center mb-3">
+      <!-- <b-spinner label="Loading..."></b-spinner> -->
+      <div class="loader"></div>
+    </div>
     </div>
   </template>
   
@@ -62,9 +66,10 @@
   <script>
   
   // import axios from 'axios'
-  
+ 
   export default {
   // props: ["products"],
+  
   computed: {
   products() {
     return this.$store.state.products
@@ -113,5 +118,18 @@
 .bb {
   color: black;
 }
+
+.loader {
+    border: 7px solid #fff9e4; /* Light grey */
+    border-top: 7px solid #e587ec; /* Blue */
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 2s linear infinite;
+  }
   
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
   </style>

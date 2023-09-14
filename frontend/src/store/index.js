@@ -144,35 +144,35 @@ export default createStore({
       }
     },
     //User
-    //register
-    // async registerUser({ commit }, userData) {
-    //   try {
-    //     const response = await axios.post("https://lisambuwa.onrender.com/register", userData);
-    //     const user = response.data;
-    //     commit("setUser", user);
-    //     if (response.status === 200) {
-    //       Swal.fire({
-    //         icon: "success",
-    //         title: "Registration Successful",
-    //         text: "You have successfully registered.",
-    //       });
-    //       this.$router.push("/login");
-    //     } else {
-    //       Swal.fire({
-    //         icon: "error",
-    //         title: "Registration Failed",
-    //         text: "An error occurred during registration.",
-    //       });
-    //     }
-    //   } catch (error) {
-    //     console.error("Network Error:", error);
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Error",
-    //       text: error.message,
-    //     });
-    //   }
-    // },
+    
+    async registerUser({ commit }, userData) {
+      try {
+        const response = await axios.post("https://lisambuwa.onrender.com/register", userData);
+        const user = response.data;
+        commit("setUser", user);
+        if (response.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Registration Successful",
+            text: "You have successfully registered.",
+          });
+          this.$router.push("/login");
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Registration Failed",
+            text: "An error occurred during registration.",
+          });
+        }
+      } catch (error) {
+        console.error("Network Error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: error.message,
+        });
+      }
+    },
     //Login
     async loginUser({ commit }, credentials) {
       try {
@@ -283,16 +283,16 @@ export default createStore({
     // },
     async updateCartItemQuantity(
       { commit, state },
-      { cartID, prodID, quantity }
+      { cartID, productID, quantity }
     ) {
       try {
-        const response = await axios.patch(`${dbConnection}cart/${prodID}`, {
+        const response = await axios.patch(`${dbConnection}cart/${productID}`, {
           quantity,
         });
         if (response.status === 200) {
           // commit("updateCartItemQuantity", { prodID, quantity });
           const cartItem = state.cart.find(
-            (item) => item.cartID === cartID && item.prodID === prodID
+            (item) => item.cartID === cartID && item.productID === productID
           );
           if (cartItem) {
             cartItem.quantity = quantity;
@@ -342,13 +342,12 @@ export default createStore({
     async editProduct() {
       try {
         const editedProduct = {
-          prodPRICE: this.updatedProduct.prodPRICE,
-          prodNAME: this.updatedProduct.prodNAME,
-          prodDESC: this.updatedProduct.prodDESC,
-          prodCAT: this.updatedProduct.prodCAT,
-          prodTYPE: this.updatedProduct.prodTYPE,
-          prodSEASON: this.updatedProduct.prodSEASON,
-          prodIMG: this.updatedProduct.prodIMG,
+          productPRICE: this.updatedProduct.productPRICE,
+          productNAME: this.updatedProduct.prodNAME,
+          productDESC: this.updatedProduct.prodDESC,
+          productCAT: this.updatedProduct.prodCAT,
+          productTYPE: this.updatedProduct.prodTYPE,        
+          productURL: this.updatedProduct.prodIMG,
           prodQUANTITY: this.updatedProduct.prodQUANTITY,
         };
         const response = await axios.patch(
