@@ -17,7 +17,7 @@
           <td>
             <img class="tableImg" :src="item.productUrl" :alt="item.productName" />
           </td>
-          <td>{{ item.productName }}</td>
+          <td>{{ item.prodName }}</td>
           <td>{{ item.productPrice }}</td>
           <td>{{ item.quantity }}</td>
           <td>
@@ -50,7 +50,7 @@ export default {
       this.$store
         .dispatch("removeFromCart", index)
         .then(() => {
-          
+
         })
         .catch((error) => {
           console.error("Error removing item from cart:", error);

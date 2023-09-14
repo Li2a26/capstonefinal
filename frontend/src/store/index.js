@@ -71,7 +71,7 @@ export default createStore({
     removeFromCart(state, index) {
       state.cart.splice(index, 1);
     },
-    
+
     setUserFromLocalStorage(state) {
       const token = localStorage.getItem("userToken");
       if (token) {
@@ -155,21 +155,23 @@ export default createStore({
     async registerUser({ commit }, userData) {
       try {
         const response = await axios.post("https://lisambuwa.onrender.com/register", userData);
-        const user = response.data;
-        commit("setUser", user);
-        if (response.status === 200) {
-          Swal.fire({
-            icon: "success",
-            title: "Registration Successful",
-            text: "You have successfully registered.",
-          });
-          this.$router.push("/login");
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Registration Failed",
-            text: "An error occurred during registration.",
-          });
+        if (response) {
+          const user = response.data;
+          commit("setUser", user);
+          if (response.status === 200) {
+            Swal.fire({
+              icon: "success",
+              title: "Registration Successful",
+              text: "You have successfully registered.",
+            });
+            this.$router.push("/login");
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Registration Failed",
+              text: "An error occurred during registration.",
+            });
+          }
         }
       } catch (error) {
         console.error("Network Error:", error);
@@ -180,6 +182,7 @@ export default createStore({
         });
       }
     },
+    
     //Login
     async loginUser({ commit }, credentials) {
       try {
@@ -320,34 +323,6 @@ export default createStore({
       } catch (error) {
         console.error("Error updating cart item quantity:", error);
         throw error;
-      }
-    },
-    //User
-    //register
-    async registerUser({ commit }, userData) {
-      try {
-        const response = await axios.post(`${dbConnection}register`, userData);
-        // const user = response.data;
-        commit("registerUser", userData);
-        if (response.status === 200) {
-          Swal.fire({
-            icon: "success",
-            title: "Successful Registration ",
-            text: "You have registered successfully .",
-          });
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Registration Failed",
-            text: "An error occurred during registration.",
-          });
-        }
-      } catch (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: error.message,
-        });
       }
     },
     //admin
