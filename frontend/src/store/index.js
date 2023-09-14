@@ -10,7 +10,7 @@ export default createStore({
     products: null,
     product: null,
     // users: null,
-    // user: null,
+    user: null,
     users: null,
     token: null,
     isLoggedIn: false,
@@ -46,32 +46,32 @@ export default createStore({
     setCart(state, cart) {
       state.cart = cart;
     },
-    // addToCart(state, product) {
-    //   state.cart.push(product);
-    // },
+
     addToCart(state, product) {
-      const existingProduct = state.cart.find(
-        (item) => item.prodID === product.prodID
-      );
-      if (existingProduct) {
-        existingProduct.quantity += 1;
-      } else {
-        product.quantity = 1;
-        state.cart.push(product);
-      }
+      state.cart.push(product);
     },
+    // addToCart(state, product) {
+    //   const existingProduct = state.cart.find(
+    //     (item) => item.prodID === product.prodID
+    //   );
+    //   if (existingProduct) {
+    //     existingProduct.quantity += 1;
+    //   } else {
+    //     product.quantity = 1;
+    //     state.cart.push(product);
+    //   }
+    // },
     updateCartItemQuantity(state, { prodID, prodQUANTITY }) {
       const cartItem = state.cart.find((item) => item.prodID === prodID);
       if (cartItem) {
         cartItem.quantity = prodQUANTITY;
       }
     },
-    removeItem(state, cartID) {
-      const index = state.cart.findIndex((item) => item.cartID === cartID);
-      if (index !== -1) {
-        state.cart.splice(index, 1);
-      }
+
+    removeFromCart(state, index) {
+      state.cart.splice(index, 1);
     },
+    
     setUserFromLocalStorage(state) {
       const token = localStorage.getItem("userToken");
       if (token) {
@@ -98,10 +98,17 @@ export default createStore({
   },
   actions: {
     getProducts: async (context) => {
-      fetch("https://lisambuwa.onrender.com/products")
-        .then((res) => res.json())
-        .then((products) => context.commit("setProducts", products));
-    },
+      try {
+        const response = await fetch("https://lisambuwa.onrender.com/products");
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const products = await response.json();
+        context.commit("setProducts", products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    },    
 
     // getProduct: async (context, id) => {
     //   fetch("https://nodeeomp.onrender.com/products/" + id)
@@ -215,43 +222,48 @@ export default createStore({
         console.error("Error fetching cart:", error);
       }
     },
-    async addToCart({ commit, state }, product) {
-      try {
-        if (!state.cart) {
-          console.error("Cart is not initialized.");
-          return false;
-        }
-        const response = await axios.post(`${dbConnection}cart`, product);
-        console.log(product);
-        if (response.status === 200) {
-          commit("addToCart", response.data);
-          console.log("addToCart", response.data);
-          await this.dispatch("getCart");
-          Swal.fire({
-            icon: "success",
-            title: "Added to Cart",
-            text: "The product has been added to your cart.",
-          });
-          return true;
-        } else {
-          console.error("Error adding to cart:", response.statusText);
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "An error occurred while adding the product to your cart.",
-          });
-          return false;
-        }
-      } catch (error) {
-        console.error("Error adding to cart:", error);
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "An error occurred while adding the product to your cart.",
-        });
-        throw error;
-      }
+    // async addToCart({ commit, state }, product) {
+    //   try {
+    //     if (!state.cart) {
+    //       console.error("Cart is not initialized.");
+    //       return false;
+    //     }
+    //     const response = await axios.post(`${dbConnection}cart`, product);
+    //     console.log(product);
+    //     if (response.status === 200) {
+    //       commit("addToCart", response.data);
+    //       console.log("addToCart", response.data);
+    //       await this.dispatch("getCart");
+    //       Swal.fire({
+    //         icon: "success",
+    //         title: "Added to Cart",
+    //         text: "The product has been added to your cart.",
+    //       });
+    //       return true;
+    //     } else {
+    //       console.error("Error adding to cart:", response.statusText);
+    //       Swal.fire({
+    //         icon: "error",
+    //         title: "Error",
+    //         text: "An error occurred while adding the product to your cart.",
+    //       });
+    //       return false;
+    //     }
+    //   } catch (error) {
+    //     console.error("Error adding to cart:", error);
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Error",
+    //       text: "An error occurred while adding the product to your cart.",
+    //     });
+    //     throw error;
+    //   }
+    // },
+
+    addToCart({ commit }, product) {
+      commit('addToCart', product);
     },
+
     async removeItem({ commit }, cartID) {
       try {
         await axios.delete(`${dbConnection}cart/${cartID}`);

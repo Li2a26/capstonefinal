@@ -10,8 +10,9 @@
     "animate.css": "^4.1.1",
     "axios": "^1.5.0",
     "core-js": "^3.8.3",
+    "cors": "^2.8.5",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.7.27",
+    "sweetalert2": "^11.7.28",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
@@ -21,5 +22,10 @@
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0"
-  }
+  },
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
