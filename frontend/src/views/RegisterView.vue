@@ -3,7 +3,7 @@
     <div class="container d-flex justify-content-center align-items-center">
       <div class="card">
         <div class="row d-flex justify-content-center align-items-center">
-          <div class="col">
+          <div class="col-lg-6 col-md-12">
             <h1>Register</h1>
 
             <form @submit.prevent="register">
@@ -25,10 +25,10 @@
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="URL" v-model="userUrl" />
               </div>
-              <button type="submit" class="btn btn-default">Register</button>
+              <button type="submit" class="btn btn-default btn-block mt-3">Register</button>
             </form>
           </div>
-          <div class="col">
+          <div class="col-lg-6 col-md-12">
             <img class="hunny" src="https://i.postimg.cc/PJmgDy6m/man-with-a-pride-flag-posing-on-white-background-androgynous-man-in-crop-top-posing-in-studio-JLPSF0.jpg" alt="" />
           </div>
         </div>
@@ -36,6 +36,9 @@
     </div>
   </div>
 </template>
+
+
+
 
 <script>
 import Swal from "sweetalert2";
@@ -54,7 +57,7 @@ export default {
   methods: {
     async register() {
       try {
-        const resp = await this.$store.dispatch("registerUser", {
+        const response = await this.$store.dispatch("registerUser", {
           firstName: this.firstName,
           lastName: this.lastName,
           userRole: this.userRole,
@@ -62,20 +65,23 @@ export default {
           userPass: this.userPass,
           userUrl: this.userUrl,
         });
-        if (resp.success) {
+
+        if (response && response.success) {
           await Swal.fire({
             icon: "success",
             title: "Registration successful",
             text: "You are now registered, please log in",
           });
+          this.$router.push("/login");
         } else {
+          const errorMessage =
+            response && response.error ? response.error : "Unexpected error";
           await Swal.fire({
             icon: "error",
             title: "Registration failed",
-            text: resp.error || "Unexpected error",
+            text: errorMessage,
           });
         }
-        this.$router.push("/login");
       } catch (e) {
         console.error("Registration error: ", e);
       }
@@ -134,7 +140,10 @@ input {
   border: pink 2px;
   text-align: center;
   margin: auto;
+  margin-top: 20px;
+ 
 }
+
 
 .hunny {
   width: 100%;

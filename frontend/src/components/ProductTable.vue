@@ -109,21 +109,29 @@ export default {
   animation: spin 2s linear infinite;
 }
 
+/* Add alignment to the table and spaces at the sides */
+.table-container {
+  padding-left: 15px; /* Add left padding */
+  padding-right: 15px; /* Add right padding */
+  text-align: center; /* Center-align table content */
+}
+
+/* Make table borders pink */
+table.table {
+  border: 2px solid pink;
+}
+
+/* Style table header */
+table.table thead {
+  background-color: pink;
+  color: white;
+}
+
 @media screen and (max-width: 576px) {
   /* Apply responsive styles for small screens here */
   .table-container {
     overflow-x: auto; /* Enable horizontal scrolling on small screens */
   }
-
-  /* Make table borders pink */
-  table.table {
-    border: 2px solid pink;
-  }
-  
-  /* Style table header */
-  table.table thead {
-    background-color: pink;
-    color: white;
-  }
 }
 </style>
+

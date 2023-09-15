@@ -11,7 +11,8 @@ import Footercomp from './components/Footercomp.vue';
 
 export default {
   components: {
-    NavbarComp, Footercomp,
+    NavbarComp, 
+    Footercomp,
 },
 mounted() {
     this.$store.dispatch("getProducts").then(() => {
