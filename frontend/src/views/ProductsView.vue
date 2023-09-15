@@ -88,7 +88,7 @@ export default {
 }
 </script>
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat:wght@100;200&display=swap');
 /* .cards {
 display: grid;
 grid-template-columns: repeat(3, 1fr);
