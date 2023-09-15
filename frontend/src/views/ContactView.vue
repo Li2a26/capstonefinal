@@ -1,6 +1,6 @@
 <template>
-  
-  <div class="row p-3 media">
+  <div class="animate__animated animate__slideInLeft" id="lisam">
+    <div class="row p-3 media">
     <h1 class="p-4 text-center heading-text">Contact Us !</h1>
 
     <div class="my-3 d-flex justify-content-center">
@@ -57,6 +57,8 @@
   
    
   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -117,6 +119,10 @@ export default {
   box-shadow: 0 0 0 0 transparent;
   
  
+}
+.lisam {
+animation-duration: 3s; /* don't forget to set a duration! */
+
 }
 
 .sub-btn:hover,

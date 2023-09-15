@@ -1,5 +1,5 @@
 <template>
-  <div class="all">
+  <div class="code animate__animated animate__slideInLeft">
     <div class="container d-flex justify-content-center align-items-center">
       <div class="card">
         <div class="row d-flex justify-content-center align-items-center">
@@ -137,5 +137,8 @@ input {
 
 .hunny {
   width: 100%;
+}
+.animate__animated animate__slideInLeft {
+  --animate-duration: 2s;
 }
 </style>
