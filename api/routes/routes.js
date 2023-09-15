@@ -3,6 +3,11 @@ const express = require("express");
 const router = express.Router();
 const cartController = require("../controller/cart")
 const productController = require("../controller/products");
+
+router.get("^/$|/CapeStoneFinal", (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, "../static/html/index.html"));
+});
+
 // import functions from controller
 const {
   showProducts,
@@ -32,7 +37,6 @@ const userController = require("../controller/users")
 const {
   showUsers,
   showUserById,
-  createRegister,
   deleteUserById,
   updateUserById,
 } = userController;
@@ -49,7 +53,7 @@ router.get("/users/:id", showUserById);
 
 //create a new user
 router.post("/register", bodyParser.json(), (req, res) => {
-  users.createRegister(req, res);
+  users.register(req, res);
 });
 
 //login a user

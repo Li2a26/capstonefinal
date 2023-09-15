@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const db = require("../config/index"); //this imprt the db con from config
 const { hash, compare, hashSync } = require("bcrypt");
 const { createToken } = require("../middleware/AuthenticateUser");
@@ -7,12 +8,12 @@ class Users {
     db.query(query, (err, results) => {
       if (err) {
         throw err;
-        result(err, null);
+        result;
       } else {
-        result(null, results)
+        result(null, results);
       }
     });
-  }
+  };
   fetchUser(req, res) {
     const query = `SELECT userID, firstName, lastName, userDOB, emailAdd, profileUrl FROM users WHERE userID = ${req.params.id};`;
     db.query(query, (err, result) => {
@@ -63,41 +64,71 @@ class Users {
       }
     });
   }
+
   async register(req, res) {
     const data = req.body;
-    //encrypt password
-    data.userPass = await hash(data.userPass, 15);
-    //PAYLOAD means DATA THAT COMES FROM THE USER
-    const user = {
-      emailAdd: data.emailAdd,
-      userPass: data.userPass,
-    };
-    //query
-    const query = `
+
+    const userPass = data.userPass;
+
+    if (!userPass || typeof userPass !== "string" || userPass.trim() === "") {
+      // Handle invalid or missing userPass field
+      res.status(400).json({
+        status: 400,
+        msg: "Invalid userPass field.",
+      });
+      return; // Exit the function
+    }
+
+    // Now, you can safely hash the password
+    const hashedPassword = await bcrypt.hash(userPass, 15);
+
+    try {
+      const hashedPassword = await bcrypt.hash(data.userPass, 15);
+
+      // Create a user object with the hashed password
+      const user = {
+        emailAdd: data.emailAdd,
+        userPass: hashedPassword,
+      };
+
+      // Query to insert the user into the database
+      const query = `
         INSERT INTO users
         SET ?;
-        `;
-    db.query(query, [data], (err) => {
-      if (err) throw err;
-      //create a token
-      let token = createToken(user);
-      res.json({
-        status: res.statusCode,
-        msg: "You are now registered.",
+      `;
+
+      db.query(query, [user], (err) => {
+        if (err) throw err;
+        // Create a token
+        let token = createToken(user);
+        res.json({
+          status: res.statusCode,
+          msg: "You are now registered.",
+        });
       });
-    });
+    } catch (error) {
+      console.error("Registration error: ", error);
+      res.status(500).json({
+        status: 500,
+        msg: "Registration failed. Internal server error.",
+      });
+    }
   }
 
   updateUser(req, res) {
     const data = req.body;
+
+    // Check if data.userPass is provided and hash it with salt rounds if it exists
     if (data.userPass) {
-      data.userPass = hashSync(data.userPass, 15);
+      data.userPass = bcrypt.hashSync(data.userPass, 15);
     }
+
     const query = `
-        UPDATE users
-        SET ?
-        WHERE userID = ?
-        `;
+      UPDATE users
+      SET ?
+      WHERE userID = ?
+    `;
+
     db.query(query, [req.body, req.params.id], (err) => {
       if (err) throw err;
       res.json({

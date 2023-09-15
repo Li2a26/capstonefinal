@@ -26,16 +26,16 @@ const showUserById = (req, res) => {
     }
   });
 };
-// const createRegister = (req, res) => {
-//   const data = req.body;
-//   Users.register(data, (err, results) => {
-//     if (err) {
-//       res.status(500).json({ error: "Internal server error" });
-//     } else {
-//       res.json({ msg: "You are now registered." });
-//     }
-//   });
-// };
+const createRegister = (req, res) => {
+  const data = req.body;
+  Users.register(data, (err, results) => {
+    if (err) {
+      res.status(500).json({ error: "Internal server error" });
+    } else {
+      res.json({ msg: "You are now registered." });
+    }
+  });
+};
 const loginUser = (req, res) => {
   const data = req.body;
   Users.login(data, (err, results) => {
@@ -72,7 +72,7 @@ const deleteUserById = (req, res) => {
 module.exports = {
   showUsers,
   showUserById,
-  // createRegister,
+  createRegister,
   loginUser,
   updateUserById,
   deleteUserById,
