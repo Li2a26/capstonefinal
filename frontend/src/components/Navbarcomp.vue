@@ -7,6 +7,7 @@
             width="60"
             height="50"
             class="d-inline-block align-text-top"
+            
         />
         <p class="queer">QUEER QUARTERS</p>
         <button

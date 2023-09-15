@@ -1,41 +1,45 @@
-
 <template>
-  <div class="d-flex justify-content-center ">
+  <div class="d-flex justify-content-center">
     <div>
       <div class="tops">
         <input type="text" v-model="searchQuery" placeholder="Search products...🔍" />
-    <button @click="sortProducts">Sort by Price (Asc)</button>
-    <button @click="sortProducts2">Sort by Price (Desc)</button>
+        <button id="purple" @click="sortProducts">Sort by Price (Asc)</button>
+        <button id="purple" @click="sortProducts2">Sort by Price (Desc)</button>
+      </div>
 
-      </div>
-   
-    <div class="oak col mt-5">
-      <div class="d-flex justify-content-center">
-        <div class="row d-flex justify-content-center card-container" v-if="products">
-          <div
-            v-for="product in filteredAndSortedProducts"
-            :key="product.productID"
-            class="product-card mx-2"
-          >
-            <img :src="product.productUrl" :alt="product.productUrl" class="img-fluid picture" />
-            <div class="content">
-              <h3 class="title">{{ product.productNAME }}</h3>
-              <h3 class="title">{{ product.productCAT }}</h3>
-              <h3 class="title">{{ product.productTYPE }}</h3>
-              <p class="sci">R {{ product.productPRICE }}</p>
+      <div class="oak col mt-5">
+        <div class="d-flex justify-content-center">
+          <div class="row card-container" v-if="products">
+            <div
+              v-for="product in filteredAndSortedProducts"
+              :key="product.productID"
+              class="col-md-4 col-sm-6 col-12 mb-4"
+            >
+              <div class="product-card mx-2">
+                <img :src="product.productUrl" :alt="product.productUrl" class="img-fluid picture" />
+                <div class="content d-flex flex-column h-100">
+                  <h3 class="title">{{ product.productNAME }}</h3>
+                  <h3 class="title">{{ product.productCAT }}</h3>
+                  <h3 class="title">{{ product.productTYPE }}</h3>
+                  <p class="sci">R {{ product.productPRICE }}</p>
+                  <router-link :to="{ name: 'product', params: { id: product.productID } }">
+                    <button id="purple"  @click="View" class="viewbtn">View more</button>
+                    <button id="purple"  @click="addToCart(product.productID)" class="addbtn">Add to cart</button>
+                  </router-link>
+                </div>
+              </div>
             </div>
-            <router-link :to="{ name: 'product', params: { id: product.productID } }">
-              <button @click="View" class="viewbtn">View more</button>
-              <button @click="addToCart(product.productID)" class="addbtn">Add to cart</button>
-            </router-link>
           </div>
+          <div v-else>Loading</div>
         </div>
-        <div v-else>Loading</div>
       </div>
-    </div>
     </div>
   </div>
 </template>
+
+<!-- The rest of your code remains unchanged -->
+
+
 
 <script>
 export default {
@@ -95,43 +99,61 @@ export default {
 </script>
 
 <style scoped>
-/* .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-} */
-
 .product-card {
   margin-bottom: 20px; /* Add margin for spacing between cards */
   box-sizing: border-box;
-  width: 400px !important;
   border: 1px solid #ddd;
   padding: 10px;
-  height:auto;
+  height: auto;
 }
+
 .img-fluid {
-  width: 300px !important;
+  max-width: 100%;
+  height: auto;
 }
-button {
-  background-color: #d914e7 ;
-  border-radius: 20px; 
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
-button:hover {
+#purple {
+  background-color: #d914e7 !important;
+  border-radius: 20px;
+  border: 6px pink;
+  padding: 5px 15px;
+}
+#purple:hover {
+  background-color: pink !important;
+}
+.button-container button {
+  background-color: #d914e7 !important;
+  border-radius: 20px;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+}
+
+.button-container button:hover {
   background-color: pink;
 }
+
 .tops {
   margin-top: 20px !important;
 }
 </style>
 
-  <style scoped>
-/* .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-} */
-
-
-
+<style scoped>
+@media screen and (max-width: 576px) {
+  .product-card {
+    width: 100%;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+}
 </style>
+
   

@@ -1,40 +1,35 @@
 <template>
   <div class="about">
-    <div
-      class="container one d-flex justify-content-center align-content-center"
-    >
+    <div class="container one">
       <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
           <img
-            class="love"
+            class="love img-fluid"
             src="https://i.postimg.cc/xdt8wT7W/love.jpg"
-            style="height: 500px"
             alt="pride"
           />
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
           <h3 class="self">Our story</h3>
           <p>
             Our story is a celebration of love, diversity, and the vibrant
-            tapestry of the LGBTQI+ community. We are more than just a store; we
-            are a labor of love, a sanctuary of inclusivity, and a testament to
-            the power of self-expression..
+            tapestry of the LGBTQI+ community. We are more than just a store;
+            we are a labor of love, a sanctuary of inclusivity, and a testament
+            to the power of self-expression..
           </p>
           <p>
-            Our journey began with a simple but profound idea: to create a space
-            where every gender identity and sexual orientation is not just
-            accepted but celebrated. Founded by LISA MBUWA, a proud member of
-            the LGBTQI+ community, QUEER QUARTERS opened its doors to the world
-            in 2023.
+            Our journey began with a simple but profound idea: to create a
+            space where every gender identity and sexual orientation is not
+            just accepted but celebrated. Founded by LISA MBUWA, a proud member
+            of the LGBTQI+ community, QUEER QUARTERS opened its doors to the
+            world in 2023.
           </p>
         </div>
       </div>
     </div>
-    <div
-      class="container one d-flex justify-content-center align-content-center"
-    >
+    <div class="container one">
       <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
           <h3 class="self">Our Commitment</h3>
           <p>
             We are committed to providing a safe, judgment-free space where
@@ -49,30 +44,26 @@
             identities and experiences.
           </p>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
           <img
-            class="trans"
+            class="trans img-fluid"
             src="https://i.postimg.cc/Gp7YkQc8/pride-best.jpg"
-            style="width: 500px"
             alt="comfort"
           />
         </div>
       </div>
     </div>
 
-    <div
-      class="container two d-flex justify-content-center align-content-center"
-    >
+    <div class="container two">
       <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
           <img
-            class="safe"
+            class="safe img-fluid"
             src="https://i.postimg.cc/3rSvV9pt/about5.jpg"
-            style="height: 350px"
             alt="safe"
           />
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
           <h3 class="self">The journey so far</h3>
           <p>
             Our journey has been filled with love, learning, and growth. Over
@@ -93,13 +84,11 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {};
-
 </script>
 
 <style scoped>
@@ -107,8 +96,9 @@ export default {};
 * {
   background-color: white;
 }
+
 .container.one,
-.container.two.d-flex.justify-content-center.align-content-center {
+.container.two {
   padding-top: 7%;
   text-align: center;
 }
@@ -116,14 +106,16 @@ export default {};
 .love {
   border: 8px solid #d914e7;
 }
+
 .trans {
   border: 8px solid pink;
 }
+
 .safe {
   border: 8px solid #5d074c;
 }
 
-.container.two.d-flex.justify-content-center.align-content-center {
+.container.two {
   padding-bottom: 7%;
 }
 
@@ -143,17 +135,13 @@ p {
   font-size: 20px;
   font-weight: 300;
   line-height: normal;
-
 }
 
-
-@media screen and (min-width: 300px) and (max-width: 760px) {
-  *{
-    overflow: hidden;
-  }
+@media screen and (max-width: 768px) {
   .container.one,
-  .container.two.d-flex.justify-content-center.align-content-center {
+  .container.two {
     padding-top: 2%;
+    padding-bottom: 2%;
   }
 
   .love,
@@ -168,14 +156,6 @@ p {
 
   p {
     font-size: 16px;
-    text-align: center; /* Center-align the paragraphs */
-    margin-top: 10px; /* Add some space between pictures and paragraphs */
-  }
-  .row{
-    flex-direction: column !important;
-  }
-  .love{
-    width: 100%;
   }
 }
 </style>
