@@ -7,10 +7,11 @@
             <img class="image img-fluid" :src="product.productUrl" :alt="product.productNAME" />
           </div>
           <div class="col-md-6">
-            <p class="fs-4">{{ product.productNAME }}</p>
+            <p class="fs-4">{{ product.prodNAME }}</p>
             <div class="card-body m-2">
               <p>{{ product.productDESC }}</p>
               <p>R {{ product.productPRICE }}</p>
+              <p> {{ product.product }}</p>
               <!-- <p>Quantity: {{ product.quantity }} In Stock</p> -->
               <button @click="addToCart(product)" class="btn btn-primary">Add to Cart</button>
             </div>

@@ -57,6 +57,10 @@ export default {
         });
     },
   },
+  created() {
+  this.$store.dispatch("getProducts");
+},
+
 };
 </script>
   

@@ -8,7 +8,7 @@ const dbConnection = 'https://lisambuwa.onrender.com/';
 export default createStore({
   state: {
     products: null,
-    product: null,
+    product: [],
     // users: null,
     user: null,
     users: null,
@@ -19,7 +19,7 @@ export default createStore({
   getters: {},
   mutations: {
     setProducts: (state, products) => {
-      state.products = products;
+      state.products = products || [];
     },
     setProduct: (state, product) => {
       state.product = product;
