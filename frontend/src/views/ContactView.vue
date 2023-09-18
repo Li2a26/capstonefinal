@@ -5,7 +5,7 @@
 
     <div class="my-3 d-flex justify-content-center">
       <div class="m-2 p-2 col-7 card blue-bg light-border light-text media-2">
-        <form action="https://formspree.io/f/xqkvbqaj" method="POST" class="p-3">
+        <form action="https://formspree.io/f/xoqzganj" method="POST" class="p-3">
           <div class="mb-3">
             <label for="fullName" class="form-label">Full Name(s): *</label>
             <input
